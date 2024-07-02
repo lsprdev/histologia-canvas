@@ -26,7 +26,7 @@ function handleImage(e) {
 function startDrawing(e) {
     isDrawing = true;
     labeledAreas.push({ path: [], label: '', visible: true });
-    ctx.strokeStyle = 'green';
+    ctx.strokeStyle = 'red';
     ctx.lineWidth = 2;
     ctx.beginPath();
     ctx.moveTo(e.offsetX, e.offsetY);
@@ -83,7 +83,7 @@ function redrawCanvas() {
     ctx.drawImage(image, 0, 0);
     labeledAreas.forEach(area => {
         if (area.visible) {
-            ctx.strokeStyle = 'green';
+            ctx.strokeStyle = 'red';
             ctx.lineWidth = 2;
             ctx.beginPath();
             area.path.forEach((point, index) => {
@@ -106,7 +106,7 @@ function redrawCanvas() {
 }
 
 function downloadImage() {
-    redrawCanvas(); // Ensure the canvas is up-to-date before downloading
+    redrawCanvas();
     const link = document.createElement('a');
     link.download = 'labeled-image.png';
     link.href = canvas.toDataURL();
